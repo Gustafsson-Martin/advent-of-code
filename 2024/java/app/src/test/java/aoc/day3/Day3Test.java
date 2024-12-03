@@ -7,7 +7,7 @@ class Day3Test {
         void sumMultiplications() {
             String input = "mul(2,3)mul(3,4)mul(111,111)";
             int result = Day3.sumMultiplications(input);
-            assertEquals(12319, result);
+            assertEquals(12339, result);
         }
 
         @org.junit.jupiter.api.Test
