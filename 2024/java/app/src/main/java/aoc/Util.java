@@ -11,11 +11,12 @@ import java.util.stream.Stream;
 
 public class Util {
     private static Path getResourcePath(String resourcePath) {
-        URL inputFile = Util.class.getResource(resourcePath);
-        if (inputFile == null) {
-            throw new IllegalArgumentException(resourcePath + " not found!");
+        try {
+            URL url = Util.class.getResource(resourcePath);
+            return Paths.get(url.toURI());
+        } catch (Exception e) {
+            throw new RuntimeException("Error loading resource " + resourcePath, e);
         }
-        return Paths.get(inputFile.getFile());
     }
     public static List<String> parseInputResource(String resourcePath) {
         List<String> lines = new ArrayList<>(List.of());
